@@ -1,0 +1,68 @@
+html, body {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Poppins;
+    /* background-color: #FFF8F3; */
+
+    /* add background image */
+    background-image: url("../img/field1.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+
+    line-height: 1.65;
+    /* padding-bottom: 1000px; */
+}
+
+/* latihan 1 */
+.container-satu {
+    max-width: 800px;
+    margin: 50px auto;
+    background-color: #fff;
+    padding: 20px;
+    box-sizing: border-box;
+    /* display */
+    display: flex;
+    background-color: #CD5C08;
+    color: #fff;
+    /* text-align: center; */
+    border: 3px solid black;
+}
+
+.kolom-utama {
+    flex: 2;
+    padding-right: 20px;
+}
+
+.sidebar-baru {
+    flex: 1;
+}
+
+.sidebar-baru a {
+    text-decoration: none;
+    color: white;
+    font-size: 16px;
+}
+.sidebar-baru a:hover {
+    text-decoration: underline;
+    font-size: 20px;
+}
+
+.sidebar-dua {
+    flex: 1;
+}
+
+.sidebar-baru {
+    order: 1;
+}
+
+.sidebar-dua {
+    order: 3;
+}
+
+.kolom-utama {
+    order: 2;
+}
+

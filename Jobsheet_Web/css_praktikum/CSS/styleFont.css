@@ -1,0 +1,18 @@
+.tulisan-satu {
+    color: red;
+    font-family: sans-serif;
+    /* font-family yang banjang adalah bertujuan sebagai referensi familiy  */
+    font-style: normal;
+}
+
+.tulisan-dua {
+    color: green;
+    font-size: 24pt;
+    font-style: italic;
+}
+
+.tulisan-tiga {
+    color: blue;
+    font-weight: bold;
+    font-style: oblique;
+}

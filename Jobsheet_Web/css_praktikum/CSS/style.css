@@ -1,0 +1,33 @@
+h2 {
+    color: orange;
+    font-family: Trebuchet MS;
+    text-align: center;
+}
+
+/* id dan class css */
+.kotak  {
+    padding: 50px;
+    width: 100px;
+    color: #fff;
+    margin: 10px;
+    background: orange;
+}
+
+#kotak {
+    width: 400px;
+    color: #fff;
+    background: blue;
+    padding: 50px;
+}
+
+/* cara penulisan CSS */
+body {
+    /* background: lightcyan; */
+    /* background: url('../img/bunga02.png'); */
+
+    background: url('../img/tree1.png'), url('../img/field1.png');
+    background-repeat: no-repeat, repeat;
+    color: white;
+}
+
+/* Margin dan Padding pada CSS */
