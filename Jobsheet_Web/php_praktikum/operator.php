@@ -48,16 +48,19 @@ echo"hasil dari operator logika !b adalah $hasilNotB <br>";
 
 echo"<br><br>";
 // tambahan 4
-echo"hasil jumlah dari $a dan $b adalah " . $a += $b;
-echo"<br>";
-echo "hasil kurang dari $a dan $b adalah " . $a -= $b;
-echo"<br>";
-echo"hasil kali dari $a dan $b adalah " . $a *= $b;
-echo"<br>";
-echo "hasil bagi dari $a dan $b adalah " . $a /= $b;
-echo"<br>";
-echo "hasil sisa bagi dari $a dan $b adalah " . $a %= $b;
-echo"<br>";
+echo"hasil jumlah dari $a dan $b adalah " . ($a += $b) . "<br>";
+echo "hasil kurang dari $a dan $b adalah " . ($a -= $b) . "<br>";
+echo"hasil kali dari $a dan $b adalah " . ($a *= $b) . "<br>";
+echo "hasil bagi dari $a dan $b adalah " . ($a /= $b) . "<br>";
+echo "hasil sisa bagi dari $a dan $b adalah " . ($a %= $b) . "<br>";
 // kenapa ketika operator penugasan digabungkan dengan sting pada echo setelahnya terjadi eror?
+
+echo"<br><br>";
+// tambahan 5
+$hasilIdentik = $a === $b;
+$hasilTidakIdentikk = $a !== $b;
+
+echo"Hasil (===) dari $a dan $b adalah $hasilIdentik <br>";
+echo"Hasil (!==) dari $a dan $b adalah $hasilTidakIdentikk<br>";
 
 ?>
