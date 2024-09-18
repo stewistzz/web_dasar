@@ -12,6 +12,7 @@ if ($nilaiNumerik >= 90 && $nilaiNumerik <= 100) {
 }
 
 // tambahan 2
+// while
 echo"<br><br>";
 $jarakSaatIni = 0;
 $jarakTarget = 500;
@@ -26,6 +27,7 @@ echo"Atel tersebut memerlukan $hari hari untuk mencapai jarak 500 kilometer";
 
 
 // tambahan 3
+// for
 echo"<br><br>";
 $jumlahLahan = 10;
 $tanamanPerLahan = 5;
@@ -39,4 +41,15 @@ for ($i=1; $i <= $jumlahLahan ; $i++) {
 
 echo"Jumlah buah yang akan dipanen adalah: $jumlahBuah";
 
+// tambahan 4
+// foreach
+echo"<br><br>";
+$skorUjian = [84, 92, 78, 96, 88];
+$totalSkor = 0;
+
+foreach ($skorUjian as $skor) {
+    $totalSkor += $skor;
+}
+
+echo"Total skor ujian adalah: $totalSkor";
 ?>
