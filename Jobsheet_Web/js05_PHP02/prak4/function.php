@@ -46,5 +46,33 @@
     $ucapanSalamNew = "Selamat pagi";
     // call function
     perkenalanDefault($sayaNew);
+    echo"<br><br>";
 
+    /* modifikasi fungsi dengan nilai pengembalian */
+    function hitungUmur($thn_lahir, $thn_sekarang)
+    {
+        $umur = $thn_sekarang - $thn_lahir;
+        return $umur;
+    }
+    // pemanggilan function
+    echo"Umur saya adalah " . hitungUmur(1988, 2023) . " Tahun";
+    echo"<br><br>";
+    
+    /*pemanggilan function didalam function*/
+    function hitungUmurCall($thn_lahir, $thn_sekarang)
+    {
+        $umur = $thn_sekarang - $thn_lahir;
+        return $umur;
+    }
+    function perkenalanUmur($nama, $salam = "Assalamualaikum")
+    {
+        echo $salam;
+        echo " Perkenalkan, nama saya" . $nama . "</br>";
+
+        // call other function
+         echo "Saya berusia" . hitungUmurCall(1988, 2023) . " tahun";
+         echo"Senang berkenalan dengan anda";
+    }
+
+    
 ?>
