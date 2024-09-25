@@ -67,12 +67,14 @@
     function perkenalanUmur($nama, $salam = "Assalamualaikum")
     {
         echo $salam;
-        echo " Perkenalkan, nama saya" . $nama . "</br>";
+        echo " Perkenalkan, nama saya " . $nama . "</br>";
 
         // call other function
-         echo "Saya berusia" . hitungUmurCall(1988, 2023) . " tahun";
+         echo "Saya berusia " . hitungUmurCall(1988, 2023) . " tahun";
          echo"Senang berkenalan dengan anda";
     }
+    // call function
+    perkenalanUmur("Elok");
 
     
 ?>
