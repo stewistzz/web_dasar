@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script src="../jquery-3.7.1.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $("#btn1").click(function() {
+                alert($("#test1").text("<b>Hello World</b>")) // mengembalikan teks
+            });
+            $("#btn2").click(function() {
+                alert($("#test2").html("<b>Hello World</b>")) // mengembalikan konten dari elemen html, mempertahankan tagnya
+            });
+            $("#btn3").click(function() {
+                alert($("#test3").val("Polinema")) // mengembalikan nilai dari form
+            });
+        });
+    </script>
+</head>
+<body>
+    <p id="test1">This is the first paragraph</p>
+    <p id="test2">This is <b>another </b>paragraph</p>
+
+    <p>Your Name : <input type="text" id="test3"></p>
+
+    <button id="btn1">Set Text</button>
+    <button id="btn2">Set HTML</button>
+    <button id="btn3">Set Value</button>
+</body>
+</html>
