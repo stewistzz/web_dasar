@@ -35,5 +35,16 @@
     } else {
         echo"Tidak ada yang cocok!";
     }
+
+    echo"<br><hr>";
+    // pertanyaan 5.5
+    $pattern = '/go?d/'; // mencari kecocokan kata god, good, goopd, tergantung jumlah o nya sebanyak kali
+    $text = 'god is good';
+
+    if (preg_match($pattern, $text, $matches)) {
+        echo"Cocokkan : " . $matches[0];
+    } else {
+        echo"Tidak ada yang cocok!";
+    }
     
 ?>
