@@ -22,6 +22,11 @@
         <span id="email-error" style="color:red;"></span><br>
         <br>
 
+        <label for="password">Password : </label>
+        <input type="password" name="password" id="password">
+        <span id="password-error" style="color:red;"></span><br>
+        <br>
+
         <input type="submit" value="Submit">
     </form>
 
@@ -39,6 +44,7 @@
                 var nama = $('#nama').val();
                 var email = $('#email').val();
                 var valid = true;
+                var password = $("#password").val();
 
                 
                 // kondisi nama
@@ -56,11 +62,19 @@
                     $("#email-error").text("");
                 }
 
+                // validasi password
+                if (password.length < 8) {
+                    $("#password-error").text("Password harus lebih dari 8");
+                    valid = false;
+                } else {
+                    $("#password-error").text("");
+                }
+
                 // valid
                 if (valid) {
-                    
-
+                
                     var formData = $("#myForm").serialize(); // Mengumpulkan data form
+                    
                     $.ajax({
                         url: "proses_validasi.php", // URL untuk mengirim data
                         type: "POST",
