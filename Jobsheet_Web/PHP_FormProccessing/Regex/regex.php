@@ -46,5 +46,16 @@
     } else {
         echo"Tidak ada yang cocok!";
     }
+
+    echo"<br><hr>";
+    // pertanyaan 5.6
+    $pattern = '/go{2,3}d/';
+    $text = 'god is good';
+
+    if (preg_match($pattern, $text, $matches)) {
+        echo"Cocokkan : " . $matches[0];
+    } else {
+        echo"Tidak ada yang cocok!";
+    }
     
 ?>
