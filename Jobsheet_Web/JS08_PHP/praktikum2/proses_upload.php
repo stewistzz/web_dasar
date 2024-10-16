@@ -1,11 +1,13 @@
 <?php 
     // lokasi penyimpanan file yang diunggah
-    $targetDirectory = "documents/";
+    $targetDirectory = "images/";
 
     // periksa apakah direktori penyimpanan ada, jika tidak maka buat
     if (!file_exists($targetDirectory)) {
         mkdir($targetDirectory, 0777, true);
     }
+
+    $allowedExtensions = array("jpg", "jpeg", "png", "gif");
 
     if ($_FILES['files']['name'][0]) {
         $totalFiles = count($_FILES['files']['name']);
@@ -24,5 +26,5 @@
         }
     } else {
         echo "Tidak ada file yang diunggah.<br>";
-    }
+    }    
 ?>
