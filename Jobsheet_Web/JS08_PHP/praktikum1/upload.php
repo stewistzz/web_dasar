@@ -15,6 +15,8 @@
             // kondisi
             if (move_uploaded_file($_FILES["myfile"]["tmp_name"], $targetfile)) {
                 echo "File berhasil diunggah";
+                // tampilkan gambar upload
+                echo '<img src="' . $targetfile . '" width="200" style="height:auto;">';
             } else {
                 echo "File gagal diunggah";
             }
