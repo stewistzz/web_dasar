@@ -12,7 +12,7 @@ if ($aksi == 'tambah') {
     $query = "INSERT INTO anggota (nama, jenis_kelamin, alamat, no_telp) VALUES ('$nama', '$jenis_kelamin', '$alamat', '$no_telp')";
 
     if (mysqli_query($koneksi, $query)) {
-        header("Location: index.php");
+        header("Location: ../Bootstrap/index.php");
         exit();
     } else {
         echo "Gagal menambahkan data: " . mysqli_error($koneksi);
@@ -24,7 +24,7 @@ if ($aksi == 'tambah') {
         $query = "UPDATE anggota SET nama='$nama', jenis_kelamin='$jenis_kelamin', alamat='$alamat', no_telp='$no_telp' WHERE id = $id";
 
         if (mysqli_query($koneksi, $query)) {
-            header("Location: index.php");
+            header("Location: ../Bootstrap/index.php");
             exit();
         } else {
             echo"Gagal mengupdate data: " . mysqli_error($koneksi);
@@ -39,7 +39,7 @@ if ($aksi == 'tambah') {
         $query = "DELETE FROM anggota where id = $id";
 
         if(mysqli_query($koneksi, $query)){
-            header("Location: index.php");
+            header("Location: ../Bootstrap/index.php");
             exit();
         } else {
             echo"Gagal menghapus data: " . mysqli_error($koneksi);
@@ -48,7 +48,7 @@ if ($aksi == 'tambah') {
         echo"ID tidak valid";
     }
 } else {
-    header("Location: index.php");
+    header("Location: ../Bootstrap/index.php");
 }
 
 mysqli_close($koneksi);
