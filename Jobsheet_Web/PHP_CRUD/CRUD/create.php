@@ -27,7 +27,7 @@
             <input type="text" name="no_telp" id="no_telp" required>
 
             <button type="submit">Simpan Data</button>
-            <a href="../praktikum1_CRUD_Read/index.php" class="btn-kembali">Kembali</a>
+            <a href="index.php" class="btn-kembali">Kembali</a>
         </form>
     </div>
 </body>
