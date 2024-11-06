@@ -16,22 +16,18 @@
                     Form Edit Jabatan
                 </div>
                 <div class="card-body">
-                    <form action="fungsi/edit.php?jabatan=edit" method="POST">
+                    <form action="fungsi/edit.php?jabatan=edit" method="POST" enctype="multipart/form-data"> 
                         <input type="hidden" value="<?php echo $row['id']; ?>" name="id">
                         <div class="mb-3">
-                            <label for="jabatan" class="form-label">Jabatan</label>
-                            <input type="text" class="form-control" name="jabatan" value="<?= $row['jabatan']; ?>">
+                            <label for="jabatan" class="forn-label">Jabatan</label>
+                            <input type="text" class="form-control" value="<?php echo $row['jabatan']; ?>" name="jabatan" id="jabatan">
                         </div>
                         <div class="mb-3">
-                            <label for="keterangan" class="form-label">Keterangan</label>
-                            <textarea class="form-control" name="keterangan"><?= $row['keterangan']; ?></textarea>
+                            <label for="keterangan" class="forn-label">Keterangan</label>
+                            <input type="text" class="form-control" value="<?php echo $row['keterangan']; ?>" name="keterangan" id="keterangan">
                         </div>
-                        <button type="submit" class="btn btn-primary">
-                            <i class="fa fa-floppy-o" aria-hidden="true"></i> Ubah
-                        </button>
-                        <a href="index.php?page=jabatan" class="btn btn-secondary">
-                            <i class="fa fa-times" aria-hidden="true"></i> Batal
-                        </a>
+                        <button type="submit" class="btn btn-primary"><i class="fa fa-floppy-o" aria-hidden="true"></i> Simpan</button>
+                        <a href="index.php?page=jabatan" class="btn btn-secondary"><i class="fa fa-times" aria-hidden="true"></i> Batal</a>
                     </form>
                 </div>
             </div>
