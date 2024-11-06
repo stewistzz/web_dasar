@@ -47,7 +47,7 @@
                                 <td><?= $row['username']; ?></td>
                                 <td>
                                     <a href="index.php?page=anggota/edit&id=<?php echo $row['user_id']; ?>" class="btn btn-warning btn-xs"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit</a>
-                                    <a href="fungsi/hapus.php?anggota=hapus&id=<?php echo $row['user_id']; ?>" onclick="javascript:return confirm('Hapus Data Jabatan ?');" class="btn btn-danger btn-xs"><i class="fa fa-trash-o" aria-hidden="true"></i> Hapus</a>
+                                    <a href="fungsi/hapus.php?anggota=hapus&id=<?php echo $row['user_id']; ?>" onclick="javascript:return confirm('Hapus Data anggota ?');" class="btn btn-danger btn-xs"><i class="fa fa-trash-o" aria-hidden="true"></i> Hapus</a>
                                 </td>
                             </tr>
                         <?php
