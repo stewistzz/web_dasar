@@ -1,6 +1,6 @@
 <?php 
 // datetime
-date_default_timezone_get("Asia/Jakarta");
+date_default_timezone_set("Asia/Jakarta");
 // koneksi ke database
 $koneksi = mysqli_connect("localhost", "root", "", "structure");
 
