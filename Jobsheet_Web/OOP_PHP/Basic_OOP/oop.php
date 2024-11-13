@@ -79,7 +79,6 @@ class Circle implements shape{
         return pi() * pow($this->radius, 2);
     }
 }
-
 class Rectangle implements shape{
     private $width;
     private $height;
@@ -103,5 +102,37 @@ $rectangle = new Rectangle(4, 6);
 
 printArea($circle);
 printArea($rectangle);
+
+echo"<hr>";
+
+// praktikum 4 -- encapsulation
+Class CCar {
+    private $model;
+    private $color;
+
+    public function __construct($model, $color) {
+        $this->model = $model;
+        $this->color = $color;
+    }
+
+    public function getModel() {
+        return $this->model;
+    }
+
+    public function getColor() {
+        return $this->color;
+    }
+    public function setColor($color) {
+        $this->color = $color;
+    }
+}
+
+$car = new CCar("Toyota", "Blue");
+echo"Model: " . $car->getModel() . "<br>";
+echo"Color: " . $car->getColor() . "<br>";
+
+$car->setColor("Red");
+
+echo"Updated Color: " . $car->getColor() . "<br>";
 
 ?>
