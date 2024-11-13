@@ -17,8 +17,9 @@ $car2->brand = "Honda";
 
 $car1->startEngine();
 echo $car2->brand;
+echo"<hr>";
 
-// praktikum 2
+// praktikum 2 -- inheritance
 class Animal{
     protected $name;
 
@@ -60,5 +61,47 @@ $dog -> sleep();
 
 $cat -> meow();
 $dog -> bark();
+echo"<hr>";
+
+// praktikum 3 -- polymorphism
+interface shape {
+    public function calculateArea();
+}
+
+class Circle implements shape{
+    private $radius;
+
+    public function __construct($radius) {
+        $this->radius = $radius;
+    }
+
+    public function calculateArea() {
+        return pi() * pow($this->radius, 2);
+    }
+}
+
+class Rectangle implements shape{
+    private $width;
+    private $height;
+
+    public function __construct($width, $height) {
+        $this->width = $width;
+        $this->height = $height;
+    }
+
+    public function calculateArea() {
+        return $this->width * $this->height;
+    }
+}
+
+function printArea(Shape $shape) {
+    echo"Area: " . $shape->calculateArea() . "<br>";
+}
+
+$circle = new Circle(5);
+$rectangle = new Rectangle(4, 6);
+
+printArea($circle);
+printArea($rectangle);
 
 ?>
