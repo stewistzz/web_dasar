@@ -172,5 +172,39 @@ $rrectangle = new RRectangle(4, 6);
 echo"Area of Circle : " . $ccircle->calculateArea() . "<br>";
 echo"Area of Rectangle : " . $rrectangle->calculateArea() . "<br>";
 
+echo"<hr>";
+
+// praktikum 6 -- interface
+
+interface Shapee {
+    public function calculateArea();
+}
+
+interface Color {
+    public function getColor();
+}
+
+class Circlee implements Shapee, Color{
+    private $radius;
+    private $color;
+
+    public function __construct($radius, $color) {
+        $this->radius = $radius;
+        $this->color = $color;
+    }
+
+    public function calculateArea() {
+        return pi() * pow($this->radius, 2);
+    }
+
+    public function getColor() {
+        return $this->color;
+    }
+}
+$circle = new Circlee(5, "Blue");
+echo"Area of Circle : " . $circle->calculateArea() . "<br>";
+echo"Color of Circle : " . $circle->getColor() . "<br>";
+
+echo"<hr>";
 
 ?>
