@@ -230,6 +230,43 @@ $car = new Carr("Toyota");
 
 echo"Brand: " . $car -> getBrand() . "<br>";
 
-// echo"<hr>";
+// praktikum 8 -- Encapsulation mand access modifiers
+echo"<hr>";
+
+class Animall {
+    public $name;
+    protected $age;
+    private $color;
+
+    // Constructor
+    public function __construct($name, $age, $color) {
+        $this->name = $name;
+        $this->age = $age;
+        $this->color = $color;
+    }
+
+    // Getter untuk name
+    public function getName() {
+        return $this->name;
+    }
+
+    // Getter untuk age
+    protected function getAge() {
+        return $this->age;
+    }
+
+    // Getter untuk color
+    private function getColor() {
+        return $this->color;
+    }
+}
+
+// Membuat objek Animal
+$animal = new Animall("Dog", 3, "Brown");
+
+// Akses properti public langsung
+echo "Name: " . $animal->name . "<br>";
+echo "Age: " . $animal->getAge() . "<br>";
+echo "Color: " . $animal->getColor() . "<br>";
 
 ?>
