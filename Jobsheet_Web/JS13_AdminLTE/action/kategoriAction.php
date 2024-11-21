@@ -51,7 +51,7 @@ if ($act == 'save') {
 
     echo json_encode([
         'status' => true,
-        'message' => 'Data berhasil disimpan.'
+        'message' => 'Data Kategori Buku Berhasil Disimpan.'
     ]);
 }
 
@@ -67,7 +67,7 @@ if ($act == 'update') {
 
     echo json_encode([
         'status' => true,
-        'message' => 'Data berhasil diupdate.'
+        'message' => 'Data kategori buku berhasil diupdate.'
     ]);
 }
 
@@ -79,6 +79,6 @@ if ($act == 'delete') {
 
     echo json_encode([
         'status' => true,
-        'message' => 'Data berhasil dihapus.'
+        'message' => 'Data kategori buku berhasil dihapus.'
     ]);
 }

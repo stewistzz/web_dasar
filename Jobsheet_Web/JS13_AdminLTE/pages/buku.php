@@ -1,3 +1,24 @@
+<?php
+// Sertakan file koneksi
+include('lib/Connection.php');
+
+// Ambil data kategori
+$sql = "SELECT kategori_id, kategori_nama FROM m_kategori";
+$result = $db->query($sql); // Gunakan $db dari file koneksi.php
+
+// Inisialisasi variable untuk opsi dropdown
+$options = "";
+
+if ($result->num_rows > 0) {
+    // Looping untuk setiap kategori
+    while ($row = $result->fetch_assoc()) {
+        $options .= "<option value='" . $row['kategori_id'] . "'>" . $row['kategori_nama'] . "</option>";
+    }
+} else {
+    $options = "<option value=''>Tidak ada kategori</option>";
+}
+?>
+
 <section class="content-header">
     <div class="container-fluid">
         <div class="row mb-2">
@@ -24,13 +45,19 @@
                 </button>
             </div>
         </div>
+
+        <!-- modified card body -->
         <div class="card-body">
             <table class="table table-sm table-bordered table-striped" id="table-data">
                 <thead>
                     <tr>
                         <th>No</th>
-                        <th>Kode Kategori</th>
-                        <th>Nama Kategori</th>
+                        <th>Kategori ID</th>
+                        <th>Buku Kode</th>
+                        <th>Buku Nama</th>
+                        <th>Jumlah</th>
+                        <th>Deskripsi</th>
+                        <th>Gambar</th>
                         <th>Aksi</th>
                     </tr>
                 </thead>
@@ -38,10 +65,12 @@
                 </tbody>
             </table>
         </div>
+        <!-- end card body buku -->
+
     </div>
 </section>
 <div class="modal fade" id="form-data" style="display: none;" aria-hidden="true">
-    <form action="action/kategoriAction.php?act=save" method="post" id="form-tambah">
+    <form action="action/bukuiAction.php?act=save" method="post" id="form-tambah">
         <!-- Ukuran Modal
 modal-sm : Modal ukuran kecil
 modal-md : Modal ukuran sedang
@@ -49,51 +78,87 @@ modal-lg : Modal ukuran besar
 modal-xl : Modal ukuran sangat besar
 penerapan setelah class modal-dialog seperti di bawah
 -->
+
+        <!-- dialog untuk menambahkan buku -->
         <div class="modal-dialog modal-md">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h4 class="modal-title">Tambah Kategori</h4>
+                    <h4 class="modal-title">Tambah Buku</h4>
                 </div>
+
                 <div class="modal-body">
                     <div class="form-group">
-                        <label>Kode Kategori</label>
-                        <input type="text" class="form-control" name="kategori_kode"
-                            id="kategori_kode">
+                        <label>Kategori</label>
+                        <select class="form-control" name="kategori_id" id="kategori_id">
+                            <option value="">Pilih Kategori</option>
+                            <?php echo $options; ?>
+                        </select>
                     </div>
                     <div class="form-group">
-                        <label>Nama Kategori</label>
-                        <input type="text" class="form-control" name="kategori_nama"
-                            id="kategori_nama">
+                        <label>Buku Kode</label>
+                        <input type="text" class="form-control" name="buku_kode"
+                            id="buku_kode">
                     </div>
+                    <div class="form-group">
+                        <label>Buku Nama</label>
+                        <input type="text" class="form-control" name="buku_nama"
+                            id="buku_nama">
+                    </div>
+                    <div class="form-group">
+                        <label>Jumlah</label>
+                        <input type="text" class="form-control" name="jumlah"
+                            id="jumlah">
+                    </div>
+                    <div class="form-group">
+                        <label>Deskripsi</label>
+                        <textarea class="form-control" name="deskripsi" id="deskripsi" rows="4"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label>Gambar</label>
+                        <textarea class="form-control" name="gambar" id="gambar" rows="4"></textarea>
+                    </div>
+
                 </div>
+
                 <div class="modal-footer justify-content-between">
-                    <button type="button" class="btn btn-default" data-
-                        dismiss="modal">Batal</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Batal</button>
                     <button type="submit" class="btn btn-primary">Simpan</button>
                 </div>
             </div>
         </div>
+        <!-- end dialog menambahkan buku -->
+
     </form>
 </div>
 <script>
     function tambahData() {
         $('#form-data').modal('show');
-        $('#form-tambah').attr('action', 'action/kategoriAction.php?act=save');
-        $('#kategori_kode').val('');
-        $('#kategori_nama').val('');
+        // moidified untuk buku
+        $('#form-tambah').attr('action', 'action/bukuAction.php?act=save');
+        $('#kategori_id').val('');
+        $('#buku_kode').val('');
+        $('#buku_nama').val('');
+        $('#jumlah').val('');
+        $('#deskripsi').val('');
+        $('#gambar').val('');
     }
 
     function editData(id) {
         $.ajax({
-            url: 'action/kategoriAction.php?act=get&id=' + id,
+            url: 'action/bukuAction.php?act=get&id=' + id,
             method: 'post',
             success: function(response) {
                 var data = JSON.parse(response);
+                // modified untnuk buku
                 $('#form-data').modal('show');
                 $('#form-tambah').attr('action',
-                    'action/kategoriAction.php?act=update&id=' + id);
-                $('#kategori_kode').val(data.kategori_kode);
-                $('#kategori_nama').val(data.kategori_nama);
+                    'action/bukuAction.php?act=update&id=' + id);
+                $('#kategori_id').val(data.kategori_id);
+                $('#buku_kode').val(data.buku_kode);
+                $('#buku_nama').val(data.buku_nama);
+                $('#jumlah').val(data.jumlah);
+                $('#deskripsi').val(data.deskripsi);
+                $('#gambar').val(data.gambar);
             }
         });
     }
@@ -101,7 +166,7 @@ penerapan setelah class modal-dialog seperti di bawah
     function deleteData(id) {
         if (confirm('Apakah anda yakin?')) {
             $.ajax({
-                url: 'action/kategoriAction.php?act=delete&id=' + id,
+                url: 'action/bukuAction.php?act=delete&id=' + id,
                 method: 'post',
                 success: function(response) {
                     var result = JSON.parse(response);
@@ -114,21 +179,16 @@ penerapan setelah class modal-dialog seperti di bawah
             });
         }
     }
+
     var tabelData;
     $(document).ready(function() {
         tabelData = $('#table-data').DataTable({
-            ajax: 'action/kategoriAction.php?act=load',
+            ajax: 'action/bukuAction.php?act=load',
         });
         $('#form-tambah').validate({
             rules: {
-                kategori_kode: {
-                    required: true,
-                    minlength: 3
-                },
-                kategori_nama: {
-                    required: true,
-                    minlength: 5
-                }
+                // modified rules
+
             },
             errorElement: 'span',
             errorPlacement: function(error, element) {

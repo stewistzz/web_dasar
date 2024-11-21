@@ -13,6 +13,7 @@
         </div>
     </div>
 </section>
+
 <!-- Main content -->
 <section class="content">
     <div class="card">
@@ -42,13 +43,13 @@
 </section>
 <div class="modal fade" id="form-data" style="display: none;" aria-hidden="true">
     <form action="action/kategoriAction.php?act=save" method="post" id="form-tambah">
-        <!-- Ukuran Modal
-modal-sm : Modal ukuran kecil
-modal-md : Modal ukuran sedang
-modal-lg : Modal ukuran besar
-modal-xl : Modal ukuran sangat besar
-penerapan setelah class modal-dialog seperti di bawah
--->
+        <!--    Ukuran Modal  
+                modal-sm : Modal ukuran kecil 
+                modal-md : Modal ukuran sedang 
+                modal-lg : Modal ukuran besar 
+                modal-xl : Modal ukuran sangat besar 
+            penerapan setelah class modal-dialog seperti di bawah 
+    -->
         <div class="modal-dialog modal-md">
             <div class="modal-content">
                 <div class="modal-header">
@@ -67,7 +68,7 @@ penerapan setelah class modal-dialog seperti di bawah
                     </div>
                 </div>
                 <div class="modal-footer justify-content-between">
-                    <button type="button" class="btn btn-default" data-
+                    <button type="button" class="btn btn-default" data
                         dismiss="modal">Batal</button>
                     <button type="submit" class="btn btn-primary">Simpan</button>
                 </div>
@@ -75,6 +76,7 @@ penerapan setelah class modal-dialog seperti di bawah
         </div>
     </form>
 </div>
+
 <script>
     function tambahData() {
         $('#form-data').modal('show');
@@ -114,11 +116,13 @@ penerapan setelah class modal-dialog seperti di bawah
             });
         }
     }
+
     var tabelData;
     $(document).ready(function() {
         tabelData = $('#table-data').DataTable({
             ajax: 'action/kategoriAction.php?act=load',
         });
+
         $('#form-tambah').validate({
             rules: {
                 kategori_kode: {
@@ -150,7 +154,7 @@ penerapan setelah class modal-dialog seperti di bawah
                         var result = JSON.parse(response);
                         if (result.status) {
                             $('#form-data').modal('hide');
-                            tabelData.ajax.reload(); // reload data tabel
+                            tabelData.ajax.reload(); // reload data tabel 
                         } else {
                             alert(result.message);
                         }

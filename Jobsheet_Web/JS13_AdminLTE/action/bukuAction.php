@@ -4,24 +4,27 @@ $session = new Session();
 if ($session->get('is_login') !== true) {
     header('Location: login.php');
 }
-include_once('../model/KategoriModel.php');
+include_once('../model/bukuModel.php');
 include_once('../lib/Secure.php');
 $act = isset($_GET['act']) ? strtolower($_GET['act']) : '';
 
 if ($act == 'load') {
-    $kategori = new KategoriModel();
-    $data = $kategori->getData();
+    $buku = new BukuModel();
+    $data = $buku->getData();
     $result = [];
     $i = 1;
     while ($row = $data->fetch_assoc()) {
-        $result['data'][] = [
+        $result['data'][] = 
+        [
             $i,
-            $row['kategori_kode'],
-            $row['kategori_nama'],
-            '<button class="btn btn-sm btn-warning"
-onclick="editData(' . $row['kategori_id'] . ')"><i class="fa fa-edit"></i></button>
-<button class="btn btn-sm btn-danger"
-onclick="deleteData(' . $row['kategori_id'] . ')"><i class="fa fa-trash"></i></button>'
+            $row['kategori_id'],  // Menampilkan kategori_id dari buku
+            $row['buku_kode'],  // Menampilkan kode buku
+            $row['buku_nama'],  // Menampilkan nama buku
+            $row['jumlah'],  // Menampilkan jumlah buku
+            $row['deskripsi'],  // Menampilkan deskripsi buku
+            $row['gambar'],  // Menampilkan gambar buku
+            '<button class="btn btn-sm btn-warning" onclick="editData(' . $row['buku_id'] . ')"><i class="fa fa-edit"></i></button>  
+         <button class="btn btn-sm btn-danger" onclick="deleteData(' . $row['buku_id'] . ')"><i class="fa fa-trash"></i></button>'
         ];
         $i++;
     }
@@ -29,41 +32,55 @@ onclick="deleteData(' . $row['kategori_id'] . ')"><i class="fa fa-trash"></i></b
 }
 if ($act == 'get') {
     $id = (isset($_GET['id']) && ctype_digit($_GET['id'])) ? $_GET['id'] : 0;
-    $kategori = new KategoriModel();
-    $data = $kategori->getDataById($id);
+    $buku = new BukuModel();
+    $data = $buku->getDataById($id);
     echo json_encode($data);
 }
 if ($act == 'save') {
-    $data = [
-        'kategori_kode' => antiSqlInjection($_POST['kategori_kode']),
-        'kategori_nama' => antiSqlInjection($_POST['kategori_nama'])
+    // validasi
+    $data = 
+    [
+        'kategori_id' => antiSqlInjection($_POST['kategori_id']),
+        'buku_kode' => antiSqlInjection($_POST['buku_kode']),
+        'buku_nama' => antiSqlInjection($_POST['buku_nama']),
+        'jumlah' => antiSqlInjection($_POST['jumlah']),
+        'deskripsi' => antiSqlInjection($_POST['deskripsi']),
+        'gambar' => antiSqlInjection($_POST['gambar'])
     ];
-    $kategori = new KategoriModel();
-    $kategori->insertData($data);
+    // $kategori = new KategoriModel();
+    $buku = new BukuModel();
+    $buku->insertData($data);
     echo json_encode([
         'status' => true,
-        'message' => 'Data berhasil disimpan.'
+        'message' => 'Data Buku Berhasil Disimpan.'
     ]);
 }
 if ($act == 'update') {
     $id = (isset($_GET['id']) && ctype_digit($_GET['id'])) ? $_GET['id'] : 0;
-    $data = [
-        'kategori_kode' => antiSqlInjection($_POST['kategori_kode']),
-        'kategori_nama' => antiSqlInjection($_POST['kategori_nama'])
+    // validasi
+    $data = 
+    [
+        'kategori_id' => antiSqlInjection($_POST['kategori_id']),
+        'buku_kode' => antiSqlInjection($_POST['buku_kode']),
+        'buku_nama' => antiSqlInjection($_POST['buku_nama']),
+        'jumlah' => antiSqlInjection($_POST['jumlah']),
+        'deskripsi' => antiSqlInjection($_POST['deskripsi']),
+        'gambar' => antiSqlInjection($_POST['gambar'])
     ];
-    $kategori = new KategoriModel();
-    $kategori->updateData($id, $data);
+    $buku = new BukuModel();
+    $buku->updateData($id, $data);
     echo json_encode([
         'status' => true,
-        'message' => 'Data berhasil diupdate.'
+        'message' => 'Data buku berhasil diupdate.'
     ]);
 }
 if ($act == 'delete') {
     $id = (isset($_GET['id']) && ctype_digit($_GET['id'])) ? $_GET['id'] : 0;
-    $kategori = new KategoriModel();
-    $kategori->deleteData($id);
+    // modified buku
+    $buku = new BukuModel();
+    $buku->deleteData($id);
     echo json_encode([
         'status' => true,
-        'message' => 'Data berhasil dihapus.'
+        'message' => 'Data buku berhasil dihapus.'
     ]);
 }
