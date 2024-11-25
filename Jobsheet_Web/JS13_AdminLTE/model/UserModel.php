@@ -1,15 +1,15 @@
 <?php
 include('Model.php');
 
-class KategoriModel extends Model
+class UserModel extends Model
 {
     protected $db;
-    protected $table = 'm_kategori';
+    protected $table = 'm_user';
     protected $driver;
 
     public function __construct()
     {
-        include_once('../lib/Connection.php');
+        include('../lib/Connection.php');
 
         $this->db = $db;
         $this->driver = $use_driver;
@@ -19,20 +19,18 @@ class KategoriModel extends Model
     {
         if ($this->driver == 'mysql') {
             // prepare statement untuk query insert 
-            $query = $this->db->prepare("insert into {$this->table} (kategori_kode, kategori_nama) values(?,?)");
+            $query = $this->db->prepare("insert into {$this->table} (username, nama, level, password) values(?,?,?,?)");
 
             // binding parameter ke query, "s" berarti string, "ss" berarti dua string 
-            $query->bind_param('ss', $data['kategori_kode'], $data['kategori_nama']);
+            $query->bind_param('ssss', $data['username'], $data['nama'], $data['level'], password_hash($data['password'], PASSWORD_DEFAULT));
 
             // eksekusi query untuk menyimpan ke database 
             $query->execute();
         } else {
             // eksekusi query untuk menyimpan ke database 
-            sqlsrv_query($this->db, "insert into {$this->table} (kategori_kode, 
-            kategori_nama) values(?,?)", array($data['kategori_kode'], $data['kategori_nama']));
+            sqlsrv_query($this->db, "insert into {$this->table} (username, nama, level, password) values(?,?,?,?)", array($data['username'], $data['nama'], $data['level'], password_hash($data['password'], PASSWORD_DEFAULT)));
         }
     }
-
     public function getData()
     {
         if ($this->driver == 'mysql') {
@@ -55,7 +53,7 @@ class KategoriModel extends Model
     {
         if ($this->driver == 'mysql') {
             // query untuk mengambil data berdasarkan id 
-            $query = $this->db->prepare("select * from {$this->table} where kategori_id = ?");
+            $query = $this->db->prepare("select * from {$this->table} where user_id = ?");
 
             // binding parameter ke query "i" berarti integer. Biar tidak kena SQL Injection 
             $query->bind_param('i', $id);
@@ -67,7 +65,7 @@ class KategoriModel extends Model
             return $query->get_result()->fetch_assoc();
         } else {
             // query untuk mengambil data berdasarkan id 
-            $query = sqlsrv_query($this->db, "select * from {$this->table} where kategori_id = ?", [$id]);
+            $query = sqlsrv_query($this->db, "select * from {$this->table} where user_id = ?", [$id]);
 
             // ambil hasil query 
             return sqlsrv_fetch_array($query, SQLSRV_FETCH_ASSOC);
@@ -78,16 +76,16 @@ class KategoriModel extends Model
     {
         if ($this->driver == 'mysql') {
             // query untuk update data 
-            $query = $this->db->prepare("update {$this->table} set kategori_kode = ?, kategori_nama = ? where kategori_id = ?");
+            $query = $this->db->prepare("update {$this->table} set username = ?, nama = ?, level = ?, password = ? where user_id = ?");
 
             // binding parameter ke query 
-            $query->bind_param('ssi', $data['kategori_kode'], $data['kategori_nama'], $id);
+            $query->bind_param('ssssi', $data['username'], $data['nama'], $data['level'], password_hash($data['password'], PASSWORD_DEFAULT), $id);
 
             // eksekusi query 
             $query->execute();
         } else {
             // query untuk update data 
-            sqlsrv_query($this->db, "update {$this->table} set kategori_kode = ?, kategori_nama = ? where kategori_id = ?", [$data['kategori_kode'], $data['kategori_nama'], $id]);
+            sqlsrv_query($this->db, "update {$this->table} set username = ?, nama = ?, level = ?, password = ? where user_id = ?", [$data['username'], $data['nama'], $data['level'], password_hash($data['password'], PASSWORD_DEFAULT), $id]);
         }
     }
 
@@ -95,8 +93,7 @@ class KategoriModel extends Model
     {
         if ($this->driver == 'mysql') {
             // query untuk delete data 
-            $query = $this->db->prepare("delete from {$this->table} where kategori_id = ?");
-
+            $query = $this->db->prepare("delete from {$this->table} where user_id = ?");
             // binding parameter ke query 
             $query->bind_param('i', $id);
 
@@ -104,11 +101,29 @@ class KategoriModel extends Model
             $query->execute();
         } else {
             // query untuk delete data 
-            sqlsrv_query(
-                $this->db,
-                "delete from {$this->table} where kategori_id = ?",
-                [$id]
-            );
+            sqlsrv_query($this->db, "delete from {$this->table} where user_id = ?", [$id]);
+        }
+    }
+
+    public function getSingleDataByKeyword($column, $keyword)
+    {
+        if ($this->driver == 'mysql') {
+            // query untuk mengambil data berdasarkan id 
+            $query = $this->db->prepare("select * from {$this->table} where {$column} = ?");
+
+            // binding parameter ke query "i" berarti integer. Biar tidak kena SQL Injection 
+            $query->bind_param('s', $keyword);
+
+            // eksekusi query 
+            $query->execute();
+
+            return $query->get_result()->fetch_assoc();
+        } else {
+            // query untuk mengambil data berdasarkan id 
+            $query = sqlsrv_query($this->db, "select * from {$this->table} where {$column} = ?", [$keyword]);
+
+            // ambil hasil query 
+            return sqlsrv_fetch_array($query, SQLSRV_FETCH_ASSOC);
         }
     }
 }
