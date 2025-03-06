@@ -19,7 +19,7 @@ class PageController extends Controller
     public function user($id, $name) {
         return view('user', [
             'id' => $id,
-            'name' => $name 
+            'name' => $name  
         ]);
     }
     // controller untuk transaksi
