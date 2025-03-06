@@ -9,4 +9,4 @@ $dbl = mysqli_connect(HOST, USER, PASSWORD, DATABASE);
 if (!$dbl) {
     die("Koneksi gagal: " . mysqli_connect_error());
 }
-?>
+?>s

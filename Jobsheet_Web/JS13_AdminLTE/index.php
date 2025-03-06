@@ -38,7 +38,6 @@ buttons/css/buttons.bootstrap4.min.css">
 <body class="hold-transition sidebar-mini">
   <!-- Site wrapper -->
   <div class="wrapper">
-
     <!-- Navbar -->
     <?php
     include('layouts/header.php');
@@ -47,6 +46,7 @@ buttons/css/buttons.bootstrap4.min.css">
 
     <!-- Main Sidebar Container -->
     <aside class="main-sidebar sidebar-dark-primary elevation-4">
+      
       <!-- Brand Logo -->
       <a href="adminlte/index3.html" class="brand-link">
         <img src="adminlte/dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
@@ -141,11 +141,11 @@ buttons/css/buttons.bootstrap4.min.css">
   <script src="adminlte/plugins/jquery-validation/jquery.validate.min.js"></script>
   <script src="adminlte/plugins/jquery-validation/additional-methods.min.js"></script>
   <script src="adminlte/plugins/jquery-validation/localization/messages_id.min.js"></script>
+
   <!-- DataTables & Plugins -->
   <script src="adminlte/plugins/datatables/jquery.dataTables.min.js"></script>
   <script src="adminlte/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
-  <script src="adminlte/plugins/datatables-
-responsive/js/dataTables.responsive.min.js"></script>
+  <script src="adminlte/plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
   <script src="adminlte/plugins/datatables-
 responsive/js/responsive.bootstrap4.min.js"></script>
   <script src="adminlte/plugins/datatables-buttons/js/dataTables.buttons.min.js"></script>
@@ -160,7 +160,7 @@ responsive/js/responsive.bootstrap4.min.js"></script>
   <!-- AdminLTE App -->
   <script src="adminlte/dist/js/adminlte.min.js"></script>
   <!-- AdminLTE for demo purposes -->
-  <script src="adminlte/dist/js/demo.js"></script>
+  <!-- <script src="adminlte/dist/js/demo.js"></script> -->
 </body>
 
 </html>

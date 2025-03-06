@@ -63,16 +63,14 @@ include('auth.php');
                 <button type="button" class="btn btn-primary" name="simpan" id="simpan">
                     <i class="fas fa-save"></i> Simpan
                 </button>
-
-                <button onclick="hapusData(<?php echo $id; ?>)" class="btn btn-danger">
-    Hapus
-</button>
-
+                <button onclick="hapusData(<?php echo $id; ?>)" class="btn btn-danger">Hapus</button>
             </div>
         </form>
         <hr>
 
+        <!-- simpan data tabel -->
         <div class="data"></div>
+        
     </div>
     <div class="text-center">&copy; <?php echo date('Y'); ?> Copyright -
         <a href="https://google.com">Desain Dan Pemrograman Web</a>

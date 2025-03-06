@@ -16,7 +16,7 @@ $(document).ready(function() {
 
         $.ajax({
             type: 'POST',
-            url: 'upload_ajax.php',
+            url: 'form_upload_ajax.php',
             data: formData,
             cache: false,
             contentType: false, // Fixed typo
